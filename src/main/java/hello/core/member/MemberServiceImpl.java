@@ -1,5 +1,8 @@
 package hello.core.member;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MemberServiceImpl implements MemberService{
 
 //    public static void main(String[] args) {

@@ -3,7 +3,14 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
+
+@Component
+//final 이 붙은 걸로 생성자 만들어줌 / 코드 없어도 됨 / 필드만 적어주면 됨!
+//@RequiredArgsConstructor
 public class OrderServiceImpl implements OrderService{
 
 //    private final MemberRepository memberRepository = new MemoryMemberRepository();
@@ -11,11 +18,11 @@ public class OrderServiceImpl implements OrderService{
     private MemberRepository memberRepository;
     private DiscountPolicy discountPolicy;
 
-    public void OrderServiceImpl(MemberRepository memberRepository, DiscountPolicy discountPolicy) {
+    @Autowired
+    public OrderServiceImpl(MemberRepository memberRepository, @Qualifier("fixDiscountPolicy") DiscountPolicy discountPolicy){
         this.memberRepository = memberRepository;
         this.discountPolicy = discountPolicy;
     }
-
     //로미오와 줄리엣에서 로미오 역을 맡은 배우가 줄리엣 역을 맡을 배우를 고르는 것과 같음
     // DIP 위반! => 항상 추상화에 의존해라
     // discountpolicy는 인터페이스 => 직접 객체인 fixdiscountpolicy 생성
