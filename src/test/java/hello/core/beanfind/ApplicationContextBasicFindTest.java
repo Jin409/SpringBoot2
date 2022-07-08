@@ -14,7 +14,7 @@ public class ApplicationContextBasicFindTest {
 
     @Test
     @DisplayName("빈 이름으로 조회")
-    void findBeanByName(){
+    void findBeanByName() {
         MemberService memberService = ac.getBean("memberService", MemberService.class);
         Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
     }
@@ -28,9 +28,10 @@ public class ApplicationContextBasicFindTest {
 
     @Test
     @DisplayName("구체 타입으로 조회")
-    Void findByName2(){
-        MemberService memberService = ac.getBean("memberService",MemberService.class);
+    void findByName2() {
+        MemberService memberService = ac.getBean("memberService", MemberService.class);
         Assertions.assertThat(memberService).isInstanceOf(MemberServiceImpl.class);
+
     }
 
 
